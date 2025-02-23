@@ -3,189 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEO Dashboard</title>
+    <title>لوحة تحكم العضو المنتدب</title>
     <link rel="stylesheet" href="styles.css">
+  
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js" defer></script>
-    <style>
-      
-      body {
-    font-family: Arial, sans-serif;
-    background-color: #EBEAE2;
-    color: #000000;
+<style>
+  /* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
     margin: 0;
     padding: 0;
-    text-align: right;
+    direction: rtl;
 }
 
 .dashboard {
     padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 h1, h2, h3 {
-    color: #4C4F27;
+    color: #2c3e50;
+}
+
+.section {
+    margin-bottom: 40px;
 }
 
 .cards {
     display: flex;
-    flex-wrap: wrap;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .card {
-    background-color: #D7D6C6;
+    background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
-    flex: 1 1 calc(25% - 40px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33.333% - 40px);
+    text-align: center;
 }
 
-.card h3 {
-    margin-top: 0;
+.progress {
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    height: 10px;
+    margin: 10px 0;
 }
 
-.measurement {
-    margin-top: 40px;
+.progress-bar {
+    background-color: #3498db;
+    border-radius: 8px;
+    height: 100%;
 }
 
 .charts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-canvas {
-    background-color: #E1E1D6;
-    padding: 20px;
-    border-radius: 10px;
-    flex: 1 1 calc(50% - 40px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.evaluation {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
-    </style>
+
+.evaluation-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33.333% - 40px);
+}
+</style>
+
 </head>
 <body>
     <div class="dashboard">
-        <h1>لوحة تحكم الرئيس التنفيذي</h1>
-        <div class="objectives">
-            <h2>الأهداف ومؤشرات الأداء الرئيسية (KPIs)</h2>
+        <h1>لوحة تحكم العضو المنتدب 2025</h1>
+        
+        <!-- Objectives Section -->
+        <div class="section">
+            <h2>الأهداف الرئيسية</h2>
             <div class="cards">
                 <div class="card">
-                    <h3>المنظور المالي</h3>
-                    <p>زيادة صافي الربح الإجمالي بنسبة 18%</p>
-                    <ul>
-                        <li>نسبة نمو صافي الربح</li>
-                        <li>هامش صافي الربح</li>
-                        <li>العائد على حقوق الملكية</li>
-                    </ul>
+                    <h3>تنويع مصادر الدخل</h3>
+                    <p>إضافة قنوات استثمارية جديدة</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 60%;"></div>
+                    </div>
+                    <p>60% إنجاز</p>
                 </div>
                 <div class="card">
-                    <h3>العملاء</h3>
-                    <p>تحقيق رضا العملاء بنسبة 90%</p>
-                    <ul>
-                        <li>معدل رضا العملاء (CSAT)</li>
-                        <li>معدل وصول الحملات الإعلامية</li>
-                        <li>نسبة التفاعل مع الفعاليات الترويجية</li>
-                    </ul>
+                    <h3>زيادة العوائد الاستثمارية</h3>
+                    <p>زيادة العوائد بنسبة X%</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 45%;"></div>
+                    </div>
+                    <p>45% إنجاز</p>
                 </div>
                 <div class="card">
-                    <h3>المشاريع</h3>
-                    <p>إبرام 3 شراكات استراتيجية</p>
-                    <ul>
-                        <li>نسبة عدد الشراكات المبرمة</li>
-                        <li>نسبة إنجاز المشاريع في الوقت المحدد</li>
-                        <li>نسبة الالتزام بموازنة المشاريع</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>الخدمات المشتركة</h3>
-                    <p>تطوير العمل الداخلي بالشركة</p>
-                    <ul>
-                        <li>نسبة تطبيق النظام</li>
-                        <li>عدد الدورات التدريبية للموظفين</li>
-                    </ul>
+                    <h3>تحسين الشفافية</h3>
+                    <p>إصدار تقارير مالية ربع سنوية</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 80%;"></div>
+                    </div>
+                    <p>80% إنجاز</p>
                 </div>
             </div>
         </div>
-        <div class="measurement">
-            <h2>طريقة القياس والتقييم</h2>
+
+        <!-- KPIs Section -->
+        <div class="section">
+            <h2>مؤشرات الأداء الرئيسية (KPIs)</h2>
             <div class="charts">
-                <canvas id="financialChart"></canvas>
-                <canvas id="customerChart"></canvas>
-                <canvas id="projectChart"></canvas>
-                <canvas id="serviceChart"></canvas>
+                <canvas id="kpiChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Measurement and Evaluation Section -->
+        <div class="section">
+            <h2>طريقة القياس والتقييم</h2>
+            <div class="evaluation">
+                <div class="evaluation-item">
+                    <h3>عدد القنوات الاستثمارية الجديدة</h3>
+                    <p>يتم قياس عدد القنوات الجديدة المضافة كل ربع سنة.</p>
+                </div>
+                <div class="evaluation-item">
+                    <h3>نسبة نمو العوائد</h3>
+                    <p>يتم قياس نسبة النمو في العوائد الاستثمارية مقارنة بالفترة السابقة.</p>
+                </div>
+                <div class="evaluation-item">
+                    <h3>عدد التقارير المالية</h3>
+                    <p>يتم قياس عدد التقارير المالية الصادرة كل ربع سنة.</p>
+                </div>
             </div>
         </div>
     </div>
-</body>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const financialCtx = document.getElementById('financialChart').getContext('2d');
-    const customerCtx = document.getElementById('customerChart').getContext('2d');
-    const projectCtx = document.getElementById('projectChart').getContext('2d');
-    const serviceCtx = document.getElementById('serviceChart').getContext('2d');
 
-    new Chart(financialCtx, {
+    <script src="script.js"></script>
+    <script>
+      
+      // script.js
+document.addEventListener('DOMContentLoaded', function () {
+    const ctx = document.getElementById('kpiChart').getContext('2d');
+    const kpiChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['نسبة نمو صافي الربح', 'هامش صافي الربح', 'العائد على حقوق الملكية'],
+            labels: ['تنويع مصادر الدخل', 'زيادة العوائد', 'تحسين الشفافية'],
             datasets: [{
-                label: 'الأداء المالي',
-                data: [18, 15, 20],
-                backgroundColor: ['#4C4F27', '#5C5B35', '#726E54']
+                label: 'مؤشرات الأداء الرئيسية',
+                data: [60, 45, 80],
+                backgroundColor: [
+                    'rgba(52, 152, 219, 0.8)',
+                    'rgba(46, 204, 113, 0.8)',
+                    'rgba(155, 89, 182, 0.8)'
+                ],
+                borderColor: [
+                    'rgba(52, 152, 219, 1)',
+                    'rgba(46, 204, 113, 1)',
+                    'rgba(155, 89, 182, 1)'
+                ],
+                borderWidth: 1
             }]
         },
         options: {
             scales: {
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function (value) {
+                            return value + '%';
+                        }
+                    }
+                }
+            },
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
                 }
             }
-        }
-    });
-
-    new Chart(customerCtx, {
-        type: 'doughnut',
-        data: {
-            labels: ['رضا العملاء', 'وصول الحملات', 'تفاعل الفعاليات'],
-            datasets: [{
-                label: 'رضا العملاء',
-                data: [90, 25, 60],
-                backgroundColor: ['#4C501E', '#595650', '#7C7558']
-            }]
-        }
-    });
-
-    new Chart(projectCtx, {
-        type: 'line',
-        data: {
-            labels: ['الشراكات', 'إنجاز المشاريع', 'الالتزام بالموازنة'],
-            datasets: [{
-                label: 'المشاريع',
-                data: [3, 7, 90],
-                borderColor: '#908B6D',
-                fill: false
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    new Chart(serviceCtx, {
-        type: 'pie',
-        data: {
-            labels: ['تطبيق النظام', 'الدورات التدريبية'],
-            datasets: [{
-                label: 'الخدمات المشتركة',
-                data: [80, 50],
-                backgroundColor: ['#A39F82', '#B5B198']
-            }]
         }
     });
 });
-</script>
+    </script>
+</body>
 </html>
