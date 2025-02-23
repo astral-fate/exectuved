@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة تحكم العضو المنتدب</title>
+    <title>لوحة تحكم عضو منتدب</title>
     <link rel="stylesheet" href="styles.css">
-  
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-  /* styles.css */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #EBEAE2;
+    color: #000000;
     margin: 0;
     padding: 0;
     direction: rtl;
@@ -20,127 +19,130 @@ body {
 
 .dashboard {
     padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 h1, h2, h3 {
-    color: #2c3e50;
+    color: #4C4F27;
 }
 
 .section {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
-.cards {
-    display: flex;
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-    flex-wrap: wrap;
 }
 
 .card {
-    background-color: #fff;
+    background-color: #D7D6C6;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    flex: 1 1 calc(33.333% - 40px);
+}
+
+.stats {
     text-align: center;
+    margin-top: 15px;
 }
 
-.progress {
-    background-color: #e0e0e0;
-    border-radius: 8px;
-    height: 10px;
-    margin: 10px 0;
+.value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4C501E;
 }
 
-.progress-bar {
-    background-color: #3498db;
-    border-radius: 8px;
-    height: 100%;
+.label {
+    font-size: 14px;
+    color: #595650;
 }
 
-.charts {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.evaluation {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.evaluation-item {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    flex: 1 1 calc(33.333% - 40px);
+canvas {
+    max-width: 100%;
+    height: auto;
 }
 </style>
 
-</head>
+/head>
 <body>
     <div class="dashboard">
-        <h1>لوحة تحكم العضو المنتدب 2025</h1>
+        <h1>لوحة تحكم عضو منتدب</h1>
         
         <!-- Objectives Section -->
         <div class="section">
-            <h2>الأهداف الرئيسية</h2>
-            <div class="cards">
+            <h2>الأهداف</h2>
+            <div class="grid-container">
                 <div class="card">
                     <h3>تنويع مصادر الدخل</h3>
                     <p>إضافة قنوات استثمارية جديدة</p>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 60%;"></div>
+                    <div class="stats">
+                        <span class="value">5</span>
+                        <span class="label">قنوات جديدة</span>
                     </div>
-                    <p>60% إنجاز</p>
                 </div>
                 <div class="card">
                     <h3>زيادة العوائد الاستثمارية</h3>
-                    <p>زيادة العوائد بنسبة X%</p>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 45%;"></div>
+                    <p>زيادة العوائد بنسبة 10%</p>
+                    <div class="stats">
+                        <span class="value">10%</span>
+                        <span class="label">نمو العوائد</span>
                     </div>
-                    <p>45% إنجاز</p>
                 </div>
                 <div class="card">
-                    <h3>تحسين الشفافية</h3>
-                    <p>إصدار تقارير مالية ربع سنوية</p>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 80%;"></div>
+                    <h3>زيادة قاعدة المستثمرين</h3>
+                    <p>زيادة المستثمرين الجدد بنسبة 15%</p>
+                    <div class="stats">
+                        <span class="value">15%</span>
+                        <span class="label">نمو المستثمرين</span>
                     </div>
-                    <p>80% إنجاز</p>
                 </div>
             </div>
         </div>
 
-        <!-- KPIs Section -->
+        <!-- KBIs Section -->
         <div class="section">
-            <h2>مؤشرات الأداء الرئيسية (KPIs)</h2>
-            <div class="charts">
-                <canvas id="kpiChart"></canvas>
+            <h2>مؤشرات الأداء الرئيسية (KBIs)</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>عدد القنوات الاستثمارية الجديدة</h3>
+                    <canvas id="investmentChannelsChart"></canvas>
+                </div>
+                <div class="card">
+                    <h3>نسبة نمو العوائد</h3>
+                    <canvas id="roiGrowthChart"></canvas>
+                </div>
+                <div class="card">
+                    <h3>عدد المستثمرين الجدد</h3>
+                    <canvas id="newInvestorsChart"></canvas>
+                </div>
             </div>
         </div>
 
         <!-- Measurement and Evaluation Section -->
         <div class="section">
-            <h2>طريقة القياس والتقييم</h2>
-            <div class="evaluation">
-                <div class="evaluation-item">
-                    <h3>عدد القنوات الاستثمارية الجديدة</h3>
-                    <p>يتم قياس عدد القنوات الجديدة المضافة كل ربع سنة.</p>
+            <h2>طرق القياس والتقييم</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>نسبة تنفيذ القرارات</h3>
+                    <div class="stats">
+                        <span class="value">85%</span>
+                        <span class="label">تنفيذ القرارات</span>
+                    </div>
                 </div>
-                <div class="evaluation-item">
-                    <h3>نسبة نمو العوائد</h3>
-                    <p>يتم قياس نسبة النمو في العوائد الاستثمارية مقارنة بالفترة السابقة.</p>
+                <div class="card">
+                    <h3>مدة تنفيذ القرارات</h3>
+                    <div class="stats">
+                        <span class="value">30 يوم</span>
+                        <span class="label">متوسط المدة</span>
+                    </div>
                 </div>
-                <div class="evaluation-item">
-                    <h3>عدد التقارير المالية</h3>
-                    <p>يتم قياس عدد التقارير المالية الصادرة كل ربع سنة.</p>
+                <div class="card">
+                    <h3>نسبة تحقيق الأهداف الاستراتيجية</h3>
+                    <div class="stats">
+                        <span class="value">90%</span>
+                        <span class="label">تحقيق الأهداف</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -148,47 +150,59 @@ h1, h2, h3 {
 
     <script src="script.js"></script>
     <script>
-      
-      // script.js
-document.addEventListener('DOMContentLoaded', function () {
-    const ctx = document.getElementById('kpiChart').getContext('2d');
-    const kpiChart = new Chart(ctx, {
+      document.addEventListener('DOMContentLoaded', function () {
+    const investmentChannelsCtx = document.getElementById('investmentChannelsChart').getContext('2d');
+    const roiGrowthCtx = document.getElementById('roiGrowthChart').getContext('2d');
+    const newInvestorsCtx = document.getElementById('newInvestorsChart').getContext('2d');
+
+    new Chart(investmentChannelsCtx, {
         type: 'bar',
         data: {
-            labels: ['تنويع مصادر الدخل', 'زيادة العوائد', 'تحسين الشفافية'],
+            labels: ['Q1', 'Q2', 'Q3', 'Q4'],
             datasets: [{
-                label: 'مؤشرات الأداء الرئيسية',
-                data: [60, 45, 80],
-                backgroundColor: [
-                    'rgba(52, 152, 219, 0.8)',
-                    'rgba(46, 204, 113, 0.8)',
-                    'rgba(155, 89, 182, 0.8)'
-                ],
-                borderColor: [
-                    'rgba(52, 152, 219, 1)',
-                    'rgba(46, 204, 113, 1)',
-                    'rgba(155, 89, 182, 1)'
-                ],
-                borderWidth: 1
+                label: 'قنوات استثمارية جديدة',
+                data: [2, 3, 5, 4],
+                backgroundColor: '#7C7558',
             }]
         },
         options: {
             scales: {
                 y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: function (value) {
-                            return value + '%';
-                        }
-                    }
-                }
-            },
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false
+                    beginAtZero: true
                 }
             }
+        }
+    });
+
+    new Chart(roiGrowthCtx, {
+        type: 'line',
+        data: {
+            labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+            datasets: [{
+                label: 'نسبة نمو العوائد',
+                data: [5, 7, 10, 12],
+                borderColor: '#4C501E',
+                fill: false,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(newInvestorsCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+            datasets: [{
+                label: 'مستثمرين جدد',
+                data: [50, 70, 100, 120],
+                backgroundColor: ['#908B6D', '#A39F82', '#B5B198', '#C6C3AF'],
+            }]
         }
     });
 });
