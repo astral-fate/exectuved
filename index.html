@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEO Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
+    <style>
+      
+      body {
+    font-family: Arial, sans-serif;
+    background-color: #EBEAE2;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+.dashboard {
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #4C4F27;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background-color: #D7D6C6;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1 1 calc(25% - 40px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.measurement {
+    margin-top: 40px;
+}
+
+.charts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+canvas {
+    background-color: #E1E1D6;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1 1 calc(50% - 40px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>لوحة تحكم الرئيس التنفيذي</h1>
+        <div class="objectives">
+            <h2>الأهداف ومؤشرات الأداء الرئيسية (KPIs)</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>المنظور المالي</h3>
+                    <p>زيادة صافي الربح الإجمالي بنسبة 18%</p>
+                    <ul>
+                        <li>نسبة نمو صافي الربح</li>
+                        <li>هامش صافي الربح</li>
+                        <li>العائد على حقوق الملكية</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>العملاء</h3>
+                    <p>تحقيق رضا العملاء بنسبة 90%</p>
+                    <ul>
+                        <li>معدل رضا العملاء (CSAT)</li>
+                        <li>معدل وصول الحملات الإعلامية</li>
+                        <li>نسبة التفاعل مع الفعاليات الترويجية</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>المشاريع</h3>
+                    <p>إبرام 3 شراكات استراتيجية</p>
+                    <ul>
+                        <li>نسبة عدد الشراكات المبرمة</li>
+                        <li>نسبة إنجاز المشاريع في الوقت المحدد</li>
+                        <li>نسبة الالتزام بموازنة المشاريع</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>الخدمات المشتركة</h3>
+                    <p>تطوير العمل الداخلي بالشركة</p>
+                    <ul>
+                        <li>نسبة تطبيق النظام</li>
+                        <li>عدد الدورات التدريبية للموظفين</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="measurement">
+            <h2>طريقة القياس والتقييم</h2>
+            <div class="charts">
+                <canvas id="financialChart"></canvas>
+                <canvas id="customerChart"></canvas>
+                <canvas id="projectChart"></canvas>
+                <canvas id="serviceChart"></canvas>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const financialCtx = document.getElementById('financialChart').getContext('2d');
+    const customerCtx = document.getElementById('customerChart').getContext('2d');
+    const projectCtx = document.getElementById('projectChart').getContext('2d');
+    const serviceCtx = document.getElementById('serviceChart').getContext('2d');
+
+    new Chart(financialCtx, {
+        type: 'bar',
+        data: {
+            labels: ['نسبة نمو صافي الربح', 'هامش صافي الربح', 'العائد على حقوق الملكية'],
+            datasets: [{
+                label: 'الأداء المالي',
+                data: [18, 15, 20],
+                backgroundColor: ['#4C4F27', '#5C5B35', '#726E54']
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(customerCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['رضا العملاء', 'وصول الحملات', 'تفاعل الفعاليات'],
+            datasets: [{
+                label: 'رضا العملاء',
+                data: [90, 25, 60],
+                backgroundColor: ['#4C501E', '#595650', '#7C7558']
+            }]
+        }
+    });
+
+    new Chart(projectCtx, {
+        type: 'line',
+        data: {
+            labels: ['الشراكات', 'إنجاز المشاريع', 'الالتزام بالموازنة'],
+            datasets: [{
+                label: 'المشاريع',
+                data: [3, 7, 90],
+                borderColor: '#908B6D',
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(serviceCtx, {
+        type: 'pie',
+        data: {
+            labels: ['تطبيق النظام', 'الدورات التدريبية'],
+            datasets: [{
+                label: 'الخدمات المشتركة',
+                data: [80, 50],
+                backgroundColor: ['#A39F82', '#B5B198']
+            }]
+        }
+    });
+});
+</script>
+</html>
